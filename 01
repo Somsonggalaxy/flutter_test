@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(TestApp());
+}
+
+class TestApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyTestAppState();
+  }
+}
+
+class MyTestAppState extends State<TestApp> {
+  var word_Index = 0;
+  var word = ["Word", "Dog", "Pig", "Stick"];
+
+  void Change() {
+    setState(() {
+      word_Index += 1;
+    });
+    print(word_Index);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Word Changer"),
+        ),
+        body: Container(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Text(word[word_Index]),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(5, 20, 4, 100)),
+                  onPressed: Change,
+                  child: Text(
+                    "Change the word",
+                    textAlign: TextAlign.center,
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
